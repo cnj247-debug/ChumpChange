@@ -1,1 +1,571 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Chump Change</title><meta http-equiv="refresh" content="0; url=index.html.html"><link rel="canonical" href="index.html.html"></head><body><p>Loading Chump Change... <a href="index.html.html">Click here if you are not redirected.</a></p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Chump Change - Turn Chump Change Into Dollar Bills</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #1b0a5c;
+      --card: #2b1380;
+      --bd: #8c63ff;
+      --pink: #ff3bdc;
+      --sky: #79e8ff;
+      --lime: #b6ff2e;
+      --gold: #ffbe2e;
+      --orange: #ff8c00;
+      --mut: #d9d0ff;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 12% 0%, #7a2cff 0%, transparent 48%),
+                  radial-gradient(circle at 92% 18%, #2a6bff 0%, transparent 40%),
+                  var(--bg);
+      color: #fff;
+      font: 16px/1.55 system-ui, -apple-system, sans-serif;
+      padding-bottom: 95px;
+    }
+    .wrap { max-width: 520px; margin: auto; padding: 0 16px; }
+    .demo-bar {
+      background: var(--sky);
+      color: #0b1240;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 7px 10px;
+    }
+    header { padding: 14px 0 6px; text-align: center; }
+    .logo {
+      font-size: 42px;
+      font-weight: 1000;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin: 0;
+      text-shadow: 0 0 20px #ff3bdc88;
+    }
+    .logo b { color: var(--sky); }
+    .logo i { font-style: normal; color: var(--lime); }
+    .tag { margin: 4px 0 10px; color: var(--mut); font-weight: 650; font-size: 14px; }
+    .art-box {
+      width: 100%;
+      border-radius: 22px;
+      border: 2px solid var(--pink);
+      box-shadow: 0 0 30px #ff3bdc77;
+      background: linear-gradient(135deg, #37147a 0%, #1e0952 100%);
+      padding: 24px 16px;
+      text-align: center;
+      margin: 10px 0 14px;
+    }
+    .art-icon { font-size: 54px; display: block; margin-bottom: 6px; filter: drop-shadow(0 0 14px #ff3bdc); }
+    .art-title { font-size: 20px; font-weight: 900; color: #fff; }
+    .art-sub { font-size: 13px; color: var(--mut); margin-top: 4px; }
+    .user-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #250f6e;
+      border: 1.5px solid var(--bd);
+      border-radius: 16px;
+      padding: 12px 18px;
+      margin-bottom: 12px;
+      font-weight: 800;
+      font-size: 15px;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .user-pill .icon-user { display: flex; align-items: center; gap: 10px; }
+    .big {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin: 10px 0;
+      font-weight: 850;
+      font-size: 17px;
+      color: #fff;
+      border: 2px solid var(--sky);
+      background: linear-gradient(110deg, #3a1cb0, #1d5fd8);
+      box-shadow: 0 0 18px #79e8ff55;
+      cursor: pointer;
+    }
+    .big small { display: block; font-weight: 500; color: var(--mut); font-size: 12px; margin-top: 2px; }
+    .big.p { border-color: var(--pink); background: linear-gradient(110deg, #8a2bf0, #5a1fc4); box-shadow: 0 0 18px #ff3bdc55; }
+    .big.l { border-color: var(--lime); background: linear-gradient(110deg, #2f6a12, #127a6a); box-shadow: 0 0 18px #b6ff2e44; }
+    .broke {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      padding: 16px;
+      margin: 14px 0;
+      font-weight: 950;
+      font-size: 19px;
+      color: #0b1240;
+      background: linear-gradient(90deg, #ff8c00, var(--gold));
+      box-shadow: 0 5px 0 #b05c00, 0 0 20px rgba(255, 140, 0, 0.5);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .banner {
+      background: var(--card);
+      border: 2px solid var(--sky);
+      border-radius: 20px;
+      padding: 16px;
+      margin: 14px 0;
+      box-shadow: 0 0 20px rgba(121, 232, 255, 0.3);
+      text-align: center;
+    }
+    .banner h2 { margin: 0; color: var(--gold); font-size: 22px; }
+    .banner p { margin: 8px 0 0; font-size: 15px; color: #fff; font-weight: 700; }
+    .filter-chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 10px; margin-bottom: 6px; scrollbar-width: none; }
+    .filter-chips::-webkit-scrollbar { display: none; }
+    .chip {
+      padding: 7px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--mut);
+      background: #250f6e;
+      border: 1px solid var(--bd);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .chip.active { background: var(--pink); color: #fff; border-color: var(--pink); box-shadow: 0 0 12px rgba(255, 47, 194, 0.5); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: 18px;
+      padding: 15px 16px;
+      margin: 12px 0;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
+    .card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .card h3 { margin: 0; font-size: 18px; color: #fff; }
+    .tier-badge { font-size: 11px; font-weight: 900; padding: 2px 8px; border-radius: 6px; color: #06143a; background: var(--lime); }
+    .tier-badge.s { background: var(--gold); }
+    .tier-badge.b { background: var(--pink); color: #fff; }
+    .reward-line { display: flex; align-items: baseline; gap: 6px; margin: 6px 0; }
+    .reward-line .amount { font-size: 20px; font-weight: 950; color: var(--lime); text-shadow: 0 0 10px #b6ff2e55; }
+    .reward-line .label { font-size: 12px; color: var(--mut); }
+    .sub-note { font-size: 12px; color: var(--mut); margin-bottom: 10px; }
+    .go-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 850;
+      text-decoration: none;
+      color: #06143a;
+      background: linear-gradient(90deg, var(--sky), var(--lime));
+      box-shadow: 0 0 14px rgba(121, 232, 255, 0.4);
+      border: none;
+      cursor: pointer;
+    }
+    .go-btn.orange { background: linear-gradient(90deg, #ff8c00, var(--gold)); color: #0b1240; box-shadow: 0 0 14px rgba(255, 140, 0, 0.4); }
+    .refer-card { background: var(--card); border: 1px solid var(--bd); border-radius: 18px; padding: 16px; margin: 16px 0; }
+    .refer-box { display: flex; gap: 8px; background: #160856; border: 1px solid var(--bd); border-radius: 10px; padding: 8px 12px; align-items: center; margin: 10px 0 12px; }
+    .refer-box input { flex: 1; background: none; border: none; color: var(--sky); font-size: 13px; font-weight: 600; outline: none; }
+    .copy-btn { background: var(--pink); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .tabs {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #1a0a58f7;
+      backdrop-filter: blur(12px);
+      border-top: 2px solid var(--pink);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 4px max(8px, env(safe-area-inset-bottom));
+      z-index: 99;
+    }
+    .tabs button {
+      background: none;
+      border: 0;
+      color: var(--mut);
+      font-size: 11px;
+      font-weight: 750;
+      padding: 6px 10px;
+      border-radius: 10px;
+      min-width: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+    }
+    .tabs button.active { color: #06143a; background: var(--sky); }
+    .view { display: none; }
+    .view.on { display: block; }
+    .footer-note { font-size: 11px; color: var(--mut); text-align: center; margin: 20px 0 10px; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="demo-bar">Free Social Sweepstakes • Play for Fun • No Purchase Necessary • 18+/21+</div>
+  
+  <div class="wrap">
+    <header>
+      <h1 class="logo"><b>CHUMP</b><i>CHANGE</i></h1>
+      <p class="tag">Turn Chump Change Into Dollar Bills.</p>
+    </header>
+
+    <!-- SECTION 1: HOME -->
+    <section id="view-home" class="view on">
+      <div class="art-box">
+        <span class="art-icon">🐵💵</span>
+        <div class="art-title">CHUMP CHANGE</div>
+        <div class="art-sub">Turn Chump Change Into Dollar Bills</div>
+      </div>
+
+      <div class="user-pill">
+        <div class="icon-user">
+          <span style="font-size:20px;">🐵</span>
+          <span>Welcome back homie</span>
+        </div>
+        <span>›</span>
+      </div>
+
+      <button class="big" onclick="goTab('casinos')">
+        <span>✨ Free Spins<small>Verified signup freeplay offers ready</small></span>
+        <span>→</span>
+      </button>
+
+      <button class="big p" onclick="goTab('casinos')">
+        <span>👑 Top Sweepstakes Casinos<small>Browse all 16 freeplay platforms</small></span>
+        <span>→</span>
+      </button>
+
+      <button class="big l" onclick="goTab('broke')">
+        <span>🏆 Recent Jackpots & Drops<small>Check top daily bonuses</small></span>
+        <span>→</span>
+      </button>
+
+      <button class="broke" onclick="goTab('broke')">
+        <span>💥</span> I'M BROKE MODE <span>›</span>
+      </button>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:18px 0 6px;">
+        <h3 style="margin:0; font-size:17px; color:#fff;">Recently Played Slots ⓘ</h3>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Stake.us <span style="color:var(--gold); font-size:13px;">★★★ 5.0</span></h3>
+          <span class="tier-badge s">TIER S</span>
+        </div>
+        <div class="reward-line">
+          <span class="amount">25 SC Free</span>
+          <span class="label">on Signup</span>
+        </div>
+        <div class="sub-note">High Daily Freebie • Free Social Casino</div>
+        <a class="go-btn orange" href="https://stake.us" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Zula Casino <span style="color:var(--gold); font-size:13px;">★★★ 4.9</span></h3>
+          <span class="tier-badge">TIER A</span>
+        </div>
+        <div class="reward-line">
+          <span class="amount">10 SC Free</span>
+          <span class="label">on Signup</span>
+        </div>
+        <div class="sub-note">High Daily Freebie • Slots & Jackpots</div>
+        <a class="go-btn" href="https://www.zulacasino.com" target="_blank" rel="noopener">Claim Bonus ↗</a>
+      </div>
+    </section>
+
+    <!-- SECTION 2: BROKE MODE -->
+    <section id="view-broke" class="view">
+      <div class="banner">
+        <h2>💥 BROKE MODE</h2>
+        <p>Nobody Will Float Ya a Few Bucks? That's Fine. We Got Ya.</p>
+      </div>
+
+      <div class="filter-chips">
+        <div class="chip active">🪙 100% Freeplay</div>
+        <div class="chip">⚡ Daily Login Drops</div>
+        <div class="chip">👑 No Purchase Needed</div>
+      </div>
+
+      <h3 style="margin:14px 0 6px; font-size:17px; color:var(--sky);">Top Free SC Drops ⓘ</h3>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Stake.us</h3>
+          <span class="tier-badge s">TIER S</span>
+        </div>
+        <div class="reward-line">
+          <span class="amount">25 SC Free</span>
+          <span class="label">Signup Bonus</span>
+        </div>
+        <div class="sub-note">Highest signup freeplay available right now.</div>
+        <a class="go-btn orange" href="https://stake.us" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Zula Casino</h3>
+          <span class="tier-badge">TIER A</span>
+        </div>
+        <div class="reward-line">
+          <span class="amount">10 SC Free</span>
+          <span class="label">Signup Bonus</span>
+        </div>
+        <div class="sub-note">Instant free credit upon phone & email verify.</div>
+        <a class="go-btn" href="https://www.zulacasino.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Sportzino</h3>
+          <span class="tier-badge">TIER A</span>
+        </div>
+        <div class="reward-line">
+          <span class="amount">7 SC Free</span>
+          <span class="label">Signup Bonus</span>
+        </div>
+        <div class="sub-note">Sports picks & slots social sweepstakes.</div>
+        <a class="go-btn" href="https://sportzino.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>WOW Vegas</h3>
+          <span class="tier-badge">TIER A</span>
+        </div>
+        <div class="reward-line">
+          <span class="amount">5 SC Free</span>
+          <span class="label">Signup Bonus</span>
+        </div>
+        <div class="sub-note">Over 900+ slot games with free coin drops.</div>
+        <a class="go-btn" href="https://www.wowvegas.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CASINOS DIRECTORY -->
+    <section id="view-casinos" class="view">
+      <div class="filter-chips">
+        <div class="chip active">👑 All Sweepstakes</div>
+        <div class="chip">⚡ Highest Freeplay</div>
+        <div class="chip">👁 Top Rated</div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Stake.us <span style="color:var(--gold); font-size:12px;">★★★ 5.0</span></h3><span class="tier-badge s">TIER S</span></div>
+        <div class="reward-line"><span class="amount">25 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn orange" href="https://stake.us" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Zula Casino <span style="color:var(--gold); font-size:12px;">★★★ 4.9</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">10 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://www.zulacasino.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Sportzino <span style="color:var(--gold); font-size:12px;">★★★ 4.8</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">7 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://sportzino.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>WOW Vegas <span style="color:var(--gold); font-size:12px;">★★★ 4.8</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">5 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">Med Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://www.wowvegas.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Casinio <span style="color:var(--gold); font-size:12px;">★★★ 4.7</span></h3><span class="tier-badge b">TIER B</span></div>
+        <div class="reward-line"><span class="amount">4 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">Med Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://casinio.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>LoneStar <span style="color:var(--gold); font-size:12px;">★★★ 4.7</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2.5 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://lonestar.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>PlayFame <span style="color:var(--gold); font-size:12px;">★★★ 4.7</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2.5 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://playfame.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Spree <span style="color:var(--gold); font-size:12px;">★★★ 4.6</span></h3><span class="tier-badge b">TIER B</span></div>
+        <div class="reward-line"><span class="amount">2.5 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://spree.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>MegaBonanza <span style="color:var(--gold); font-size:12px;">★★★ 4.7</span></h3><span class="tier-badge b">TIER B</span></div>
+        <div class="reward-line"><span class="amount">2.5 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">Med Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://megabonanza.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Jackpota <span style="color:var(--gold); font-size:12px;">★★★ 4.6</span></h3><span class="tier-badge b">TIER B</span></div>
+        <div class="reward-line"><span class="amount">2.5 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">Med Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://jackpota.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>SpinBlitz <span style="color:var(--gold); font-size:12px;">★★★ 4.6</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2.5 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">Med Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://spinblitz.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Pulsz <span style="color:var(--gold); font-size:12px;">★★★ 4.8</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2.3 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://www.pulsz.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Crown Coins <span style="color:var(--gold); font-size:12px;">★★★ 4.8</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://crowncoinscasino.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>RealPrize <span style="color:var(--gold); font-size:12px;">★★★ 4.7</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">High Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://www.realprize.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>LuckyLand Slots <span style="color:var(--gold); font-size:12px;">★★★ 4.7</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">Med Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://luckylandslots.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Chumba Casino <span style="color:var(--gold); font-size:12px;">★★★ 4.7</span></h3><span class="tier-badge">TIER A</span></div>
+        <div class="reward-line"><span class="amount">2 SC Free</span><span class="label">on Signup</span></div>
+        <div class="sub-note">Med Daily Freebie • Official Site</div>
+        <a class="go-btn" href="https://www.chumbacasino.com" target="_blank" rel="noopener">Launch Casino ↗</a>
+      </div>
+
+      <!-- REFERRAL CARD -->
+      <div class="refer-card">
+        <div style="font-size:16px; font-weight:850; color:#fff;">Referral Rewards</div>
+        <div class="refer-box">
+          <input type="text" id="refer-input" value="https://chumpchange.win/refer/homie" readonly>
+          <button class="copy-btn" onclick="copyReferral()">COPY</button>
+        </div>
+        <div style="font-size:13px; font-weight:800; color:var(--gold); margin-bottom:8px;">Top Referrals</div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #3c1e9e; font-size:13px;">
+          <span>👑 VegasJen</span>
+          <span style="color:var(--lime); font-weight:800;">52 friends</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #3c1e9e; font-size:13px;">
+          <span>🎰 SlotKing</span>
+          <span style="color:var(--lime); font-weight:800;">45 friends</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; font-size:13px;">
+          <span>💰 BonusBob</span>
+          <span style="color:var(--lime); font-weight:800;">21 friends</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PROFILE -->
+    <section id="view-profile" class="view">
+      <div class="user-pill" style="margin-top:16px;">
+        <div class="icon-user">
+          <span style="font-size:26px;">🐵</span>
+          <div>
+            <div style="font-size:17px;">Homie (Pro Chump)</div>
+            <div style="font-size:12px; color:var(--lime);">VIP Sweepstakes Player</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:14px; font-weight:800; color:var(--gold); margin-bottom:6px;">Total Freeplay Available</div>
+        <div style="font-size:32px; font-weight:1000; color:var(--lime);">75.8 SC Free</div>
+        <div style="font-size:12px; color:var(--mut); margin-top:4px;">Across all 16 free social sweepstakes platforms. No purchase required.</div>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      Chump Change is a free social sweepstakes directory. Play for fun with free virtual coins. No purchase necessary. 18+/21+ depending on operator and location. Void where prohibited.
+    </p>
+  </div>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="tabs">
+    <button class="active" id="tab-home" onclick="goTab('home')">
+      <span style="font-size:18px;">🏠</span>
+      <span>Home</span>
+    </button>
+    <button id="tab-casinos" onclick="goTab('casinos')">
+      <span style="font-size:18px;">🎰</span>
+      <span>Casinos</span>
+    </button>
+    <button id="tab-broke" onclick="goTab('broke')">
+      <span style="font-size:18px;">💥</span>
+      <span>Broke</span>
+    </button>
+    <button id="tab-profile" onclick="goTab('profile')">
+      <span style="font-size:18px;">👤</span>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+  <script>
+    function goTab(t) {
+      document.querySelectorAll('.view').forEach(e => e.classList.remove('on'));
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+
+      if (t === 'home') {
+        document.getElementById('view-home').classList.add('on');
+        document.getElementById('tab-home').classList.add('active');
+      } else if (t === 'casinos') {
+        document.getElementById('view-casinos').classList.add('on');
+        document.getElementById('tab-casinos').classList.add('active');
+      } else if (t === 'broke') {
+        document.getElementById('view-broke').classList.add('on');
+        document.getElementById('tab-broke').classList.add('active');
+      } else if (t === 'profile') {
+        document.getElementById('view-profile').classList.add('on');
+        document.getElementById('tab-profile').classList.add('active');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyReferral() {
+      const el = document.getElementById('refer-input');
+      el.select();
+      navigator.clipboard.writeText(el.value);
+      alert('Referral link copied!');
+    }
+  </script>
+</body>
+</html>
